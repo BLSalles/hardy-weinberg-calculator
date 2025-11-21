@@ -3,10 +3,15 @@ import pandas as pd
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+import toml
 from openai import OpenAI
+
 st.set_page_config(page_title="HW - Versão A (Abas)", layout="wide")
 st.title("Calculadora Genética Completa — Versão A (Abas)")
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+#client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+secrets = toml.load("/etc/secrets/secrets.toml")
+client = OpenAI(api_key=secrets["OPENAI_API_KEY"])
+
 tabs = st.tabs(["Hardy–Weinberg", "Simulação Evolutiva", "Testes/Questões", "Agente IA"])
 # --------------------------------
 # ABA 1: HARDY–WEINBERG
